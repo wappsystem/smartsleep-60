@@ -11,7 +11,7 @@
                         <!-- form start -->
                         <form id="F__ID" class="text-left">
                             <div id=S1__ID>
-                                <h3>Am I eligible</h3>
+                                <h3>Am I eligible?</h3>
                                 <!-- form group -->
                                 <div class="form-group text-center">
                                     <h4>We invite you to complete the below questions to determine if you are suitable
@@ -315,10 +315,28 @@
             })
             //---------------------------------------
             m.before_submit = function (data, index) {
+                data.fu=''
+                if(data.shiftwork=='Y' && data.shifts!='0') data.fu='shiftworker';
+                else{
+                    if(parseInt(data.sleep_hours) <= 6) data.fu='short-sleeper'
+                }
+                if(data.trouble_wake=='Y' && data.awake_type=='evening' && data.commitments=='Y') {
+                    if(data.fu=='short-sleeper') data.fu='short-sleeper, delayed sleep phase'
+                    if(data.fu=='shiftworker') data.fu='shiftworker, delayed sleep phase'
+                    if(data.fu=='') data.fu='delayed sleep phase'
+                }
                 //-------------------------------------
                 return true;
             }
             //---------------------------------------
+            m.after_insert = function (data, index) {
+                if(data.age=='Y' && data.fluent=='Y' && data.smart_phone=='Y' && data.fu!='' && (data.osa=='on' || data.insomnia=='on')) {
+                    $vm.load_module(m.prefix + 'eligible-data', '', {puid:index.UID});
+                }
+                else{
+                    $vm.load_module(m.prefix + 'not_elig', '', {});
+                }
+            }
         }
     </script>
     <style>
