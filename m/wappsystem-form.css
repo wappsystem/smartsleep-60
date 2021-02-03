@@ -4,10 +4,9 @@
     color: #FCFBF5;
     letter-spacing: 0;
     display: block;
-    background-color: #00263A;
+    background-color: #012D60;
     padding: 15px;
     border-radius: 3px 3px 0 0;
-    margin-top: -5px
 }
 #D__ID .formbox h7 {
     font-family: 'Roboto Slab';
@@ -15,10 +14,9 @@
     color: #FCFBF5;
     letter-spacing: 0;
     display: block;
-    background-color: #00263A;
+    background-color:lightgrey;
     padding: 5px 15px;
     border-radius: 3px 3px 0 0;
-    margin-top: -5px
 }
 /* TOP OF FORM MARGIN */
 #D__ID .mt-95 {
@@ -26,6 +24,7 @@
 }
 #D__ID .form-group {
     display: block !important;
+    background-color:lightgrey;
     /*border-bottom: 1px solid #E5EEF0 !important */
 }
 #D__ID .form-group h4 {
@@ -34,7 +33,7 @@
     color: #00263A;
     letter-spacing: 0;
     line-height: 28px;
-    /*background-color: lightgrey;*/
+    background-color: lightgrey;
 }
 #D__ID .form-group h6 {
     font-family: 'Roboto Slab';
@@ -91,8 +90,8 @@
     margin: 15px;
 }
 #D__ID .btn-primary:hover {
-    background-color: #506A88;
-    border-color: #506A88;
+    background-color: #012D60;
+    border-color: #012D60;
     font-family: 'Nunito Sans';
     font-weight: lighter;
     font-size: 12px;
@@ -120,7 +119,7 @@
     padding-right: 25px
 }
 #D__ID .btn-outline-light:hover {
-    color: #EA7859;
+    color: #FCD004;
 }
 #D__ID p.note {
     font-family: 'Nunito Sans';
@@ -157,10 +156,10 @@
     color:#fff;
 }
 #D__ID .radiobuttons:hover input ~ .checkmark {
-    background-color: #506A88;
+    background-color: #012D60;
 }
 #D__ID .radiobuttons input:checked ~ .checkmark {
-    background-color: #EA7859;
+    background-color: #FCD004;
 }
 #D__ID .checkmark:after {
     content: "";
@@ -210,10 +209,10 @@
     border-radius: 0%;
 }
 #D__ID .checkboxes:hover input ~ .check_checkmark {
-    background-color: #506A88;
+    background-color: #012D60;
 }
 #D__ID .checkboxes input:checked ~ .check_checkmark {
-    background-color: #EA7859;
+    background-color: #FCD004;
 }
 #D__ID .check_checkmark:after {
     content: "";
