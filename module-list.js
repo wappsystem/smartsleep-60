@@ -2,7 +2,7 @@
     //-------------------------------------------------------------------------------------
     var modules={
         "survey-data":  {url:"$H/m/survey-data.html",Table:"smartsleep-60-survey",form_module:"survey-form"},
-        "survey-form":  {url:"$H/m/elig.html",Table:"smartsleep-60-survey"},
+        "survey-form":  {url:"$H/m/survey-form.html",Table:"smartsleep-60-survey"},
         "pis-data":  	{url:"$H/m/pis-data.html",Table:"smartsleep-60-pis",form_module:"pis-form"},
         "pis-form":  	{url:"$H/m/pis-form.html",Table:"smartsleep-60-pis"},
         "consent-data": {url:"$H/m/consent-data.html",Table:"smartsleep-60-consent",form_module:"consent-form"},
