@@ -410,7 +410,7 @@
                 data.fu=''
                 if(data.shiftwork=='Y' && data.shifts!='0') data.fu='shiftworker';
                 else{
-                    if(parseInt(data.sleep_hours) <= 6) data.fu='short-sleeper'
+                    if(parseFloat(data.sleep_hours) <= 6) data.fu='short-sleeper'
                 }
                 if(data.trouble_wake=='Y' && data.awake_type=='evening' && data.commitments=='Y') {
                     if(data.fu=='short-sleeper') data.fu='short-sleeper, delayed sleep phase'
