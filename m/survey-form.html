@@ -102,6 +102,9 @@
                                             <label class="checkboxes">
                                                 <input type="checkbox" name="insomnia">
                                                 <span class="check_checkmark"></span> e. Insomnia</label><br>
+                                            <label class="checkboxes">
+                                                <input type="checkbox" name="none">
+                                                <span class="check_checkmark"></span> f. None of the above</label><br>
                                         </fieldset>
                                     </div>
                                 </div>
@@ -169,7 +172,7 @@
                                         <div class="questiongroup">
                                             <fieldset class="">
                                                 <label><span class="">Hours</span>
-                                                    <input class="form-control" type="number" min=0 max=15
+                                                    <input class="form-control" type="text"  placeholder="0 - 14.9"
                                                         name="sleep_hours" id=q7_ans__ID required>
                                                 </label><br>
                                             </fieldset>
@@ -203,9 +206,38 @@
                                     </div>
                                     <div class="questiongroup">
                                         <fieldset class="">
-                                            <label><span class="">HH:MM AM/PM</span>
-                                                <input class="form-control" type="time" name="sleep_time" required>
-                                            </label><br>
+                                            <label><span class="">&nbsp;&nbsp;HH</span>
+                                                <select class="form-control"  id="hh__ID" required>
+                                                    <option value=""></option>
+                                                    <option value="01">01</option>
+                                                    <option value="02">02</option>
+                                                    <option value="03">03</option>
+                                                    <option value="04">04</option>
+                                                    <option value="05">05</option>
+                                                    <option value="06">06</option>
+                                                    <option value="07">07</option>
+                                                    <option value="08">08</option>
+                                                    <option value="09">09</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                </select>
+                                            </label>
+                                            <label><span class="">&nbsp;&nbsp;MM</span>
+                                                <select class="form-control"  id="mm__ID">
+                                                    <option value="00">00</option>
+                                                    <option value="15">15</option>
+                                                    <option value="30">30</option>
+                                                    <option value="45">45</option>
+                                                </select>
+                                            </label>
+                                            <label><span class="">&nbsp;&nbsp;AM/PM</span>
+                                                <select class="form-control"  id="ap__ID">
+                                                    <option value="AM">AM</option>
+                                                    <option value="PM" selected >PM</option>
+                                                </select>
+                                            </label>
+                                            <input class="form-control" type=text name="sleep_time" style='display: none;' >
                                         </fieldset>
                                     </div>
                                 </div>
@@ -236,9 +268,38 @@
                                     </div>
                                     <div class="questiongroup">
                                         <fieldset class="">
-                                            <label><span class="">HH:MM AM/PM</span>
-                                                <input class="form-control" type="time" name="wake_time" required >
-                                            </label><br>
+                                            <label><span class="">&nbsp;&nbsp;HH</span>
+                                                <select class="form-control"  id="hh2__ID" required>
+                                                    <option value=""></option>
+                                                    <option value="01">01</option>
+                                                    <option value="02">02</option>
+                                                    <option value="03">03</option>
+                                                    <option value="04">04</option>
+                                                    <option value="05">05</option>
+                                                    <option value="06">06</option>
+                                                    <option value="07">07</option>
+                                                    <option value="08">08</option>
+                                                    <option value="09">09</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                </select>
+                                            </label>
+                                            <label><span class="">&nbsp;&nbsp;MM</span>
+                                                <select class="form-control"  id="mm2__ID">
+                                                    <option value="00">00</option>
+                                                    <option value="15">15</option>
+                                                    <option value="30">30</option>
+                                                    <option value="45">45</option>
+                                                </select>
+                                            </label>
+                                            <label><span class="">&nbsp;&nbsp;AM/PM</span>
+                                                <select class="form-control"  id="ap2__ID">
+                                                    <option value="AM" selected>AM</option>
+                                                    <option value="PM" >PM</option>
+                                                </select>
+                                            </label>
+                                            <input class="form-control" type=text name="wake_time" style='display: none;' >
                                         </fieldset>
                                     </div>
                                 </div>
@@ -297,6 +358,17 @@
     <script>
         function F__ID() {
             VmInclude: __CURRENT_PATH__/form.01.js
+            $("#D__ID input[name=sleep_hours]").keypress(function () 
+            {
+                var charCode = event.which
+                if ((charCode > 47 && charCode < 58) || charCode == 46) return true;
+                return false;
+            });
+            $("#D__ID input[name=sleep_hours]").on('keyup',function (){
+                console.log(parseFloat($("#D__ID input[name=sleep_hours]").val()))
+                if (parseFloat($("#D__ID input[name=sleep_hours]").val())>=15) $("#D__ID input[name=sleep_hours]").val("14.9") 
+                else if ($("#D__ID input[name=sleep_hours]").val().lastIndexOf(".") >2) $("#D__ID input[name=sleep_hours]").val((parseFloat($("#D__ID input[name=sleep_hours]").val())).toString())
+            });
             //-------------------------------------
             $("#D__ID input[name=shiftwork]").on('click', function () {
                 console.log($("#D__ID input[name=shiftwork]:checked").val())
@@ -312,6 +384,26 @@
                     $('#q7_ans__ID').prop('required', true);
                     $('#q7__ID').show();
                 }
+            })
+            //-------------------------------------
+            $("#D__ID #hh__ID").on('change', function () {
+                $("#D__ID input[name=sleep_time]").val($("#D__ID #hh__ID").val()+":"+$("#D__ID #mm__ID").val()+" "+$("#D__ID #ap__ID").val())
+            })
+            $("#D__ID #mm__ID").on('change', function () {
+                $("#D__ID input[name=sleep_time]").val($("#D__ID #hh__ID").val()+":"+$("#D__ID #mm__ID").val()+" "+$("#D__ID #ap__ID").val())
+            })
+            $("#D__ID #ap__ID").on('change', function () {
+                $("#D__ID input[name=sleep_time]").val($("#D__ID #hh__ID").val()+":"+$("#D__ID #mm__ID").val()+" "+$("#D__ID #ap__ID").val())
+            })
+            //-------------------------------------
+            $("#D__ID #hh2__ID").on('change', function () {
+                $("#D__ID input[name=wake_time]").val($("#D__ID #hh2__ID").val()+":"+$("#D__ID #mm2__ID").val()+" "+$("#D__ID #ap2__ID").val())
+            })
+            $("#D__ID #mm2__ID").on('change', function () {
+                $("#D__ID input[name=wake_time]").val($("#D__ID #hh2__ID").val()+":"+$("#D__ID #mm2__ID").val()+" "+$("#D__ID #ap2__ID").val())
+            })
+            $("#D__ID #ap2__ID").on('change', function () {
+                $("#D__ID input[name=wake_time]").val($("#D__ID #hh2__ID").val()+":"+$("#D__ID #mm2__ID").val()+" "+$("#D__ID #ap2__ID").val())
             })
             //---------------------------------------
             m.before_submit = function (data, index) {
@@ -331,7 +423,7 @@
             //---------------------------------------
             m.after_insert = function (data, index) {
                 if(data.age=='Y' && data.fluent=='Y' && data.smart_phone=='Y' && data.fu!='' && (data.osa=='on' || data.insomnia=='on')) {
-                    $vm.load_module(m.prefix + 'eligible-data', '', {puid:index.UID});
+                    $vm.load_module(m.prefix + 'elig', '', {puid:index.UID});
                 }
                 else{
                     $vm.load_module(m.prefix + 'not_elig', '', {});
