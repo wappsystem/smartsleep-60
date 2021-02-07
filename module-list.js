@@ -3,12 +3,12 @@
     var modules={
         "survey-data":  {url:"$H/m/survey-data.html",Table:"smartsleep-60-survey",form_module:"survey-form"},
         "survey-form":  {url:"$H/m/survey-form.html",Table:"smartsleep-60-survey"},
-        "pis-data":  	{url:"$H/m/pis-data.html",Table:"smartsleep-60-pis",form_module:"pis-form"},
-        "pis-form":  	{url:"$H/m/pis-form.html",Table:"smartsleep-60-pis"},
         "consent-data": {url:"$H/m/consent-data.html",Table:"smartsleep-60-consent",form_module:"consent-form"},
         "consent-form": {url:"$H/m/consent-form.html",Table:"smartsleep-60-consent"},
         "not_elig":     {url:"$H/m/not_elig.html"},
-        "elig":         {url:"$H/m/elig.html"}
+        "elig":         {url:"$H/m/elig.html"},
+        "pis":  	    {url:"$H/m/pis.html"},
+        "thank-you":    {url:"$H/m/thank-you.html"}
    }
     //-------------------------------------------------------------------------------------
     for(p in modules){

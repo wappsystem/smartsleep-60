@@ -1,100 +1,52 @@
 <div id=D__ID>
-
     <!--third html start -->
-    <div class="container mt-95 mb-3 text-left">
+    <div class="container">
         <div class="row">
-
             <!-- form container start -->
-
-            <div class="col-12 col-lg-7 col-md-11 col-sm-12 mx-auto formbox">
+            <div class="col-12 col-lg-12 col-md-12 col-sm-12 mx-auto formbox "
+                style="background-color:#012D60;border:10px solid #FCD004">
                 <div class="row">
-                    <div class="col-12">
-
+                    <div class="col-1"></div>
+                    <div class="col-10">
                         <!-- form start -->
-                        <form id=F__ID>
-                            <h3>PRIMARY CARE PROFESSIONAL CONSENT FORM</h3>
+                        <form id="F__ID" class="text-left">
+                            <h3>Consent</h3>
                             <!-- form group -->
                             <div class="form-group">
-                                <fieldset class="text-center">
-                                    <h4>The feasibility of a mobile application (SleepFix) delivering behavioural
-                                        therapy for Insomnia in primary care
-                                    </h4>
-                                </fieldset>
-                            </div>
-                            <div class="form-group text-left">
-                                <fieldset class="subquestions">
-                                    <h4>I have read and understood the <b>Participant Information Sheet - Primary Care
-                                        Professional Version 1.2 (April 2020)</b> for the above named research study and
-                                        have been given the opportunity to discuss the study with</h4>
-                                    <div class="form-group">
-                                        <div class="questiongroup">
-                                            <fieldset>
-                                                <label class="radiobuttons">
-                                                    <input type="radio" name="Coordinator" value="Melissa" required>
-                                                    <span class="checkmark"></span> Melissa Aji</label><br>
-                                                <label class="radiobuttons">
-                                                    <input type="radio" name="Coordinator" value="Paula">
-                                                    <span class="checkmark"></span> Paula Ordonez</label><br>
-                                                <label class="radiobuttons">
-                                                    <input type="radio" name="Coordinator" value="No-one">
-                                                    <span class="checkmark"></span> No need</label><br>
-                                            </fieldset>
-                                        </div>
-                                    </div>
-                                    <br><br>Part A
+                                <fieldset>
+                                    <span style="font-size: 1.25rem;"><b>Declaration by Participant </b></span>
                                     <ul>
-                                        <li>I consent to that my interview being audio and/or video recorded and stored electronically.</li>
-                                        <li>I understand that only the research team will have access to this recording.
-                                        </li>
-                                        <li>I understand that the recording will be erased following transcription.</li>
-                                    </ul>
-                                    <br><br>Part A and Part B
-                                    <ul>
-                                        <li>I freely agree to participate in this research project according to the
-                                            conditions in the Participant Information Sheet which I confirm has been
-                                            provided to me. </li>
-                                        <li>I understand that my involvement in this study may not be of any direct
-                                            benefit to me.</li>
-                                        <li>I understand that I am free to withdraw from the study at any stage. </li>
-                                        <li>I declare that all my questions have been answered to my satisfaction.</li>
-                                        <li>I have read, or have had read to me in a language in which I am fluent, and
-                                            I understand the Participant Information Sheet - Primary Care Professional
-                                            Version 1.2 (April 2020).</li>
+                                        <li>I have read the Participant Information Sheet or someone has read it to me in a language that I understand.</li>
+                                        <li>I understand the purposes, procedures and risks of the research described in the project.</li>
+                                        <li>I give permission for my doctors, other health professionals, hospitals or laboratories outside this hospital to release information to The Adelaide Institute for Sleep Health: A Flinders Centre of Research Excellence and the Woolcock Institute of Medical Research concerning my disease and treatment for the purposes of this project. I understand that such information will remain confidential.</li>
+                                        <li>I have had an opportunity to ask questions and I am satisfied with the answers I have received.</li>
+                                        <li>I freely agree to participate in this research project as described and understand that I am free to withdraw at any time during the study without affecting my future health care.</li>
+                                        <li>I understand that I will be given a signed copy of this document to keep.</li>
                                     </ul>
                                 </fieldset>
                             </div>
-                            <div class="form-group text-left">
-                                <h4><b>I hereby agree to participate in the following aspects of this research study</b>
-                                </h4>
+                            <div class="form-group">
+                                <span class=font-weight-bold>Please provide your contact details below:
+                                </span>
                                 <div class="questiongroup">
-                                    <fieldset class="">
-                                        <label class="radiobuttons">
-                                            <input type="radio" name="Consent" value="Part A" required>
-                                            <span class="checkmark"></span> Part A
-                                        </label><br>
-                                        <label class="radiobuttons">
-                                            <input type="radio" name="Consent" value="Part A + Part B" required>
-                                            <span class="checkmark"></span> Part A + Part B
-                                        </label><br>
-                                        <label class="radiobuttons">
-                                            <input type="radio" name="Consent" value="No">
-                                            <span class="checkmark"></span> No
-                                        </label><br>
-                                    </fieldset>
-                                </div>
-                            </div>
-                            <div id=consent_no_text__ID style='display:none'>
-                                <div class="form-group text-left">
-                                    <fieldset class="subquestions">
-                                        <h4>In order to participate in the study, you will need to agree to the
-                                            statements above. If you have any questions, please contact us on 02 9114
-                                            0481 or woolcock.sleepfix@woolcock.org
-                                        </h4>
+                                    <fieldset>
+                                        <label >Name
+                                            <input type="text" class="form-control" name="name" required>
+                                        </label>
+                                        <label >Mobile Number
+                                            <input type="tel" class="form-control" name="mobile_number"
+                                                id="mobileNumber__ID" placeholder="XXXX-XXX-XXX" required>
+                                        </label>
+                                        <label >Email Address
+                                            <input type=email class='form-control' name=email id=email__ID
+                                                placeholder="Email" required >
+                                        </label>
                                     </fieldset>
                                 </div>
                             </div>
                             <div style="text-align:right">
-                                <button type="submit" id="submit__ID" class="btn btn-primary btn-lg">Next</button>
+                                <input id=submit__ID type=image value='submit' src="images/button-consent.png"
+                                    style="float:right;width: 150px;" />
                             </div>
                         </form>
                     </div>
@@ -110,24 +62,40 @@
             m.default_load = m.load;
             m.load = function () {
                 m.default_load();
-                $('#submit__ID').show();
-                $('#consent_no_text__ID').hide();
                 $('#D__ID').scrollTop(0);
                 $(window).scrollTop(0);
                 m.input.goback = 1;
             }
             //-------------------------------------
-            $("#D__ID input[name=Consent]").on('click', function () {
-                if ($(this).attr('value') == 'Part A' || $(this).attr('value') == 'Part A + Part B') { 
-                    $('#submit__ID').show(); $('#consent_no_text__ID').hide(); 
+            m.before_submit = function (data, index) {
+                data.consent='Yes'
+                return true;
+            }
+            //-------------------------------------
+            $('#mobileNumber__ID').keyup(function (e) {
+                var ph = this.value.replace(/\D/g, '').substring(0, 10);
+                // Backspace and Delete keys
+                var deleteKey = (e.keyCode == 8 || e.keyCode == 46);
+                var len = ph.length;
+                if (len == 0) {
+                    ph = ph;
+                } else if (len < 4) {
+                    ph = ph;
+                } else if (len == 4) {
+                    ph = ph + (deleteKey ? '' : '-');
+                } else if (len < 7) {
+                    ph = ph.substring(0, 4) + '-' + ph.substring(4, 7);
+                } else if (len == 7) {
+                    ph = ph.substring(0, 4) + '-' + ph.substring(4, 7) + (deleteKey ? '' : '-');
+                } else {
+                    ph = ph.substring(0, 4) + '-' + ph.substring(4, 7) + '-' + ph.substring(7, 10);
                 }
-                else { 
-                    $('#submit__ID').hide(); $('#consent_no_text__ID').show(); 
-                }
-            })
-            //-------------------------------
+                this.value = ph;
+            });
+           //-------------------------------
             m.after_insert = function (data, res) {
-                $vm.load_module_v2(m.prefix + 'survey-form', '', { p_uid: m.input.p_uid });
+                // send email to ssa@woolcock.org.au
+                $vm.load_module_v2(m.prefix + 'thank-you', '', { });
             }
             //--------------------------------------------------------
             $('#D__ID').css('min-height', $vm.min_height);
@@ -139,7 +107,55 @@
         #D__ID {
             height: 100%;
             animation: vm_module_fadein 1.0s;
+            /*background-color: #fff;*/
             overflow: auto;
+        }
+
+        #D__ID .downloads {
+            border-top-style: solid;
+            border-top-color: white;
+            border-top-width: 1px;
+            display: inline-block;
+            width: 100%;
+            padding-top: 10px;
+            margin-top: 10px;
+            margin-bottom: -10px;
+        }
+
+        #D__ID .downloads:hover {
+            opacity: 0.95;
+        }
+
+        #D__ID .downloads h5 {
+            font-family: 'Roboto Slab';
+            font-size: 22px;
+            color: #45496A;
+            letter-spacing: 0;
+        }
+
+        #D__ID .downloads h5:hover {
+            text-decoration: underline;
+        }
+
+        #D__ID .downloads p {
+            font-family: 'Nunito Sans';
+            font-size: 14px;
+            color: #000;
+            letter-spacing: 0;
+        }
+
+        #D__ID .downloads img {
+            float: right;
+            margin-left: 5px
+        }
+
+        #D__ID .small-text {
+            font-family: 'Nunito Sans';
+            font-size: 0.6em
+        }
+        VmInclude:__CURRENT_PATH__/wappsystem-form.css
+        #D__ID h4 {
+            font-size: 16px;
         }
 
         VmInclude:__CURRENT_PATH__/wappsystem-form.css

@@ -357,13 +357,16 @@
     </div>
     <script>
         function F__ID() {
+            //-------------------------------------
             VmInclude: __CURRENT_PATH__/form.01.js
+            //-------------------------------------
             $("#D__ID input[name=sleep_hours]").keypress(function () 
             {
                 var charCode = event.which
                 if ((charCode > 47 && charCode < 58) || charCode == 46) return true;
                 return false;
             });
+            //-------------------------------------
             $("#D__ID input[name=sleep_hours]").on('keyup',function (){
                 console.log(parseFloat($("#D__ID input[name=sleep_hours]").val()))
                 if (parseFloat($("#D__ID input[name=sleep_hours]").val())>=15) $("#D__ID input[name=sleep_hours]").val("14.9") 
