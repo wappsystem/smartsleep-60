@@ -161,22 +161,20 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id=q7__ID style="display:none">
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-sm control-group">
-                                                <h4>7. On a regular night, how many hours of sleep do you usually get?
-                                                </h4>
-                                            </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm control-group">
+                                            <h4>7. On a regular night, how many hours of sleep do you usually get?
+                                            </h4>
                                         </div>
-                                        <div class="questiongroup">
-                                            <fieldset class="">
-                                                <label><span class="">Hours</span>
-                                                    <input class="form-control" type="text"  placeholder="0 - 14.9"
-                                                        name="sleep_hours" id=q7_ans__ID required>
-                                                </label><br>
-                                            </fieldset>
-                                        </div>
+                                    </div>
+                                    <div class="questiongroup">
+                                        <fieldset class="">
+                                            <label><span class="">Hours</span>
+                                                <input class="form-control" type="text"  placeholder="0 - 14.9"
+                                                    name="sleep_hours" id=q7_ans__ID required>
+                                            </label><br>
+                                        </fieldset>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -376,16 +374,12 @@
             $("#D__ID input[name=shiftwork]").on('click', function () {
                 console.log($("#D__ID input[name=shiftwork]:checked").val())
                 if ($("#D__ID input[name=shiftwork]:checked").val() == 'Y') {
-                    $('#q7_ans__ID').prop('required', false);
-                    $('#q7__ID').hide();
                     $('#q6_ans__ID').prop('required', true);
                     $('#q6__ID').show();
                 }
                 else {
                     $('#q6_ans__ID').prop('required', false);
                     $('#q6__ID').hide();
-                    $('#q7_ans__ID').prop('required', true);
-                    $('#q7__ID').show();
                 }
             })
             //-------------------------------------
@@ -412,11 +406,13 @@
             m.before_submit = function (data, index) {
                 data.fu=''
                 if(data.shiftwork=='Y' && data.shifts!='0') data.fu='shiftworker';
-                else{
-                    if(parseFloat(data.sleep_hours) <= 6) data.fu='short-sleeper'
+                if(parseFloat(data.sleep_hours) <= 6) {
+                    if(data.fu=='shiftworker') data.fu='shiftworker, short-sleeper'
+                    else data.fu='short-sleeper'
                 }
                 if(data.trouble_wake=='Y' && data.awake_type=='evening' && data.commitments=='Y') {
                     if(data.fu=='short-sleeper') data.fu='short-sleeper, delayed sleep phase'
+                    if(data.fu=='shiftworker, short-sleeper') data.fu='shiftworker, short-sleeper, delayed sleep phase'
                     if(data.fu=='shiftworker') data.fu='shiftworker, delayed sleep phase'
                     if(data.fu=='') data.fu='delayed sleep phase'
                 }
@@ -425,7 +421,7 @@
             }
             //---------------------------------------
             m.after_insert = function (data, index) {
-                if(data.age=='Y' && data.fluent=='Y' && data.smart_phone=='Y' && data.fu!='' && (data.osa=='on' || data.insomnia=='on')) {
+                if(data.age=='Y' && data.fluent=='Y' && data.smart_phone=='Y' && data.fu!='' && (data.osa=='on' || data.insomnia=='on' || data.none=='on')) {
                     $vm.load_module(m.prefix + 'elig', '', {puid:index.UID});
                 }
                 else{
