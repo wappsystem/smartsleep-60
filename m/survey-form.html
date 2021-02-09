@@ -421,7 +421,7 @@
             }
             //---------------------------------------
             m.after_insert = function (data, index) {
-                if(data.age=='Y' && data.fluent=='Y' && data.smart_phone=='Y' && data.fu!='' && (data.osa=='on' || data.insomnia=='on' || data.none=='on')) {
+                if(data.age=='Y' && data.fluent=='Y' && data.smart_phone=='Y' && data.fu!='' && (data.osa=='on' || data.insomnia=='on' || data.none=='on') && (data.rls!='on' && data.narcolepsy!='on' && data.sbd!='on')) {
                     $vm.load_module(m.prefix + 'elig', '', {puid:index.UID});
                 }
                 else{
