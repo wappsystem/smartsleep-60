@@ -8,7 +8,9 @@
         "not_elig":     {url:"$H/m/not_elig.html"},
         "elig":         {url:"$H/m/elig.html"},
         "pis":  	    {url:"$H/m/pis.html"},
-        "thank-you":    {url:"$H/m/thank-you.html"}
+        "thank-you":    {url:"$H/m/thank-you.html"},
+        "smart-data":  {url:"$H/m/smart-data.html",Table:"smartsleep-60-survey",form_module:"smart-form"},
+        "smart-form":  {url:"$H/m/smart-form.html",Table:"smartsleep-60-survey"},
    }
     //-------------------------------------------------------------------------------------
     for(p in modules){
