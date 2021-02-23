@@ -814,11 +814,19 @@
                                             <label >Mobile Number
                                                 <input type="tel" class="form-control" name="mobile_number"
                                                     id="mobileNumber__ID" placeholder="XXXX-XXX-XXX" >
-                                            </label>
-                                            <label >Email Address
+                                            </label><br>
+                                            <label style='width:100%'>Email Address
                                                 <input type=email class='form-control' name=email id=email__ID
                                                     placeholder="Email"  >
-                                            </label>
+                                            </label><br>
+                                            <label >I want to have sms alert when an email has been sent. <br>
+                                                <label class="radiobuttons ">
+                                                    <input type="radio" name="sms" id=sms__ID value="Y" >
+                                                    <span class="checkmark"></span>Yes</label>
+                                                <label class="radiobuttons ">
+                                                    <input type="radio" name="sms" value="N" checked>
+                                                    <span class="checkmark"></span>No </label>
+                                            </label>                                                
                                         </fieldset>
                                     </div>
                                 </div>
@@ -872,6 +880,7 @@
                     $('#name__ID').attr('required','required');
                     $('#mobileNumber__ID').attr('required','required');
                     $('#email__ID').attr('required','required');
+                    $('#sms__ID').attr('required','required');
                 }
                 $(window).scrollTop(0);
             }
