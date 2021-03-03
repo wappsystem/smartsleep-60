@@ -161,26 +161,28 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-sm control-group">
-                                            <h4>7. On a regular night, how many hours of sleep do you usually get?
-                                            </h4>
+                                <div style='display:none'>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm control-group">
+                                                <h4>7. On a regular night, how many hours of sleep do you usually get?
+                                                </h4>
+                                            </div>
+                                        </div>                                    
+                                        <div class="questiongroup">
+                                            <fieldset class="">
+                                                <label><span class="">Hours</span>
+                                                    <input class="form-control" type="text"  placeholder="0 - 14.9"
+                                                        name="sleep_hours" id=q7_ans__ID >
+                                                </label><br>
+                                            </fieldset>
                                         </div>
                                     </div>
-                                    <div class="questiongroup">
-                                        <fieldset class="">
-                                            <label><span class="">Hours</span>
-                                                <input class="form-control" type="text"  placeholder="0 - 14.9"
-                                                    name="sleep_hours" id=q7_ans__ID required>
-                                            </label><br>
-                                        </fieldset>
-                                    </div>
-                                </div>
-                                <div class="form-group">
+                                </div>                               
+                                <div class="form-group" >
                                     <div class="row">
                                         <div class="col-sm control-group">
-                                            <h4>8. Do you have trouble falling asleep at your desired time?
+                                            <h4>7. Do you have trouble falling asleep at your desired time?
                                             </h4>
                                         </div>
                                     </div>
@@ -198,7 +200,7 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-sm control-group">
-                                            <h4>9. What time do you typically fall asleep?
+                                            <h4>8. What time do you typically fall asleep?
                                             </h4>
                                         </div>
                                     </div>
@@ -242,7 +244,7 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-sm control-group">
-                                            <h4>10. Do you have trouble waking up?
+                                            <h4>9. Do you have trouble waking up?
                                             </h4>
                                         </div>
                                     </div>
@@ -260,7 +262,7 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-sm control-group">
-                                            <h4>11. What time do you typically wake-up?
+                                            <h4>10. What time do you typically wake-up?
                                             </h4>
                                         </div>
                                     </div>
@@ -304,7 +306,7 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-sm control-group">
-                                            <h4>12. One hears about “morning types” and “evening types.” Which one of
+                                            <h4>11. One hears about “morning types” and “evening types.” Which one of
                                                 these types do you consider yourself to be?
                                             </h4>
                                         </div>
@@ -323,7 +325,7 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-sm control-group">
-                                            <h4>13. If you had no next-day commitments would you go to bed late and wake
+                                            <h4>12. If you had no next-day commitments would you go to bed late and wake
                                                 late in the morning?
                                             </h4>
                                         </div>
@@ -804,12 +806,29 @@
                                     </fieldset>
                                 </div>
                                 <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm control-group">
+                                            <h4>7. On a regular night, how many hours of sleep do you usually get?
+                                            </h4>
+                                        </div>
+                                    </div>                                    
+                                    <div class="questiongroup">
+                                        <fieldset class="">
+                                        </fieldset>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
                                     <span class=font-weight-bold>Please provide your contact details below:
                                     </span>
                                     <div class="questiongroup">
                                         <fieldset>
                                             <label >Name
                                                 <input type="text" class="form-control" name="name" id=name__ID >
+                                            </label>
+                                            <label><span class="">Age</span>
+                                                <input class="form-control" type="text" 
+                                                    name="age2" id=age2__ID >
                                             </label>
                                             <label >Mobile Number
                                                 <input type="tel" class="form-control" name="mobile_number"
@@ -860,7 +879,7 @@
                 m.set_file_link("File_Name");
             }*/
             //---------------------------------------
-                $('#F__ID button').on('click', function (event) {
+            $('#F__ID button').on('click', function (event) {
                 var d = $(this).attr("d");
                 d = parseInt(d);
                 if (d < 0) show_section(current_I - 1);
@@ -884,6 +903,7 @@
                     $('#mobileNumber__ID').attr('required','required');
                     $('#email__ID').attr('required','required');
                     $('#sms__ID').attr('required','required');
+                    $('#age2__ID').attr('required','required');
                 }
                 $(window).scrollTop(0);
             }
@@ -925,7 +945,7 @@
                 }
             }
             //-------------------------------------
-            $("#D__ID input[name=sleep_hours]").keypress(function () 
+            $("#D__ID input[name=age2]").keypress(function () 
             {
                 var charCode = event.which
                 if ((charCode > 47 && charCode < 58) || charCode == 46) return true;
@@ -952,23 +972,66 @@
             //-------------------------------------
             $("#D__ID #hh__ID").on('change', function () {
                 $("#D__ID input[name=sleep_time]").val($("#D__ID #hh__ID").val()+":"+$("#D__ID #mm__ID").val()+" "+$("#D__ID #ap__ID").val())
+                calc_sleep_dur();
             })
             $("#D__ID #mm__ID").on('change', function () {
                 $("#D__ID input[name=sleep_time]").val($("#D__ID #hh__ID").val()+":"+$("#D__ID #mm__ID").val()+" "+$("#D__ID #ap__ID").val())
+                calc_sleep_dur();
             })
             $("#D__ID #ap__ID").on('change', function () {
                 $("#D__ID input[name=sleep_time]").val($("#D__ID #hh__ID").val()+":"+$("#D__ID #mm__ID").val()+" "+$("#D__ID #ap__ID").val())
+                calc_sleep_dur();
             })
             //-------------------------------------
             $("#D__ID #hh2__ID").on('change', function () {
                 $("#D__ID input[name=wake_time]").val($("#D__ID #hh2__ID").val()+":"+$("#D__ID #mm2__ID").val()+" "+$("#D__ID #ap2__ID").val())
+                calc_sleep_dur();
             })
             $("#D__ID #mm2__ID").on('change', function () {
                 $("#D__ID input[name=wake_time]").val($("#D__ID #hh2__ID").val()+":"+$("#D__ID #mm2__ID").val()+" "+$("#D__ID #ap2__ID").val())
+                calc_sleep_dur();
             })
             $("#D__ID #ap2__ID").on('change', function () {
                 $("#D__ID input[name=wake_time]").val($("#D__ID #hh2__ID").val()+":"+$("#D__ID #mm2__ID").val()+" "+$("#D__ID #ap2__ID").val())
+                calc_sleep_dur();
             })
+            //---------------------------------------
+            var calc_sleep_dur=function(){
+                if($("#D__ID #hh__ID").val()!='' && $("#D__ID #hh2__ID").val()!=''){
+                    var startInputHrs = parseInt($("#D__ID #hh__ID").val());
+                    var startInputMins = parseInt($("#D__ID #mm__ID").val());
+                    if($("#D__ID #ap__ID").val()=='AM'){
+                        if (startInputHrs==12) startInputHrs=0
+                    }
+                    if($("#D__ID #ap__ID").val()=='PM'){
+                        if(startInputHrs!=12) startInputHrs=startInputHrs+12
+                    }
+                    console.log("start: "+startInputHrs);
+                    var endInputHrs = parseInt($("#D__ID #hh2__ID").val());
+                    var endInputMins = parseInt($("#D__ID #mm2__ID").val());
+                    if($("#D__ID #ap2__ID").val()=='AM'){
+                        if (endInputHrs==12) endInputHrs=0
+                    }
+                    if($("#D__ID #ap2__ID").val()=='PM'){
+                        if(endInputHrs!=12) endInputHrs=endInputHrs+12
+                    }
+                   console.log("end: "+endInputHrs);
+                    var startMin = startInputHrs*60 + startInputMins;
+                    var endMin = endInputHrs*60 + endInputMins;
+                    console.log(startMin +' - '+endMin );
+                    var sleep_dur_min;
+                    if (endMin < startMin) {
+                        var minutesPerDay = 24*60; 
+                        sleep_dur_min = minutesPerDay - startMin;  // Minutes till midnight
+                        sleep_dur_min += endMin; // Minutes in the next day
+                    } 
+                    else {
+                        sleep_dur_min = endMin - startMin;
+                    }
+                    console.log((sleep_dur_min/60).toString());
+                    $("#D__ID input[name=sleep_hours]").val((sleep_dur_min/60).toString());
+                }
+            }
             //---------------------------------------
             m.before_submit = function (data, index) {
                 data.problem=''
