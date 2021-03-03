@@ -851,11 +851,14 @@
             //---------------------------------------
             var N = 4;
             var current_I = 1;
-            //---------------------------------------
-            m.before_submit = function (data, index) {
-                //-------------------------------------
-                return true;
-            }
+            //-------------------------------------
+/*            var load2 = m.load;
+            m.load = function () {
+                load2();
+                if (m.input.readonly != undefined) $('#submit__ID').hide();
+                //render_file_field_v2(m.input.record,'__ID',$('#File_Name__ID'));
+                m.set_file_link("File_Name");
+            }*/
             //---------------------------------------
                 $('#F__ID button').on('click', function (event) {
                 var d = $(this).attr("d");
@@ -866,17 +869,17 @@
                 }
             })
             //---------------------------------------
-            var show_section = function (I) {
+            var show_section = function (II) {
                 for (var i = 1; i <= N; i++) {
                     $('#S' + i + "__ID").hide(); // remove/add '//' for Test mode/Production mode 
                     $('#S' + i + "__ID * ").attr('disabled', 'disabled');
                 }
-                if (I < 1) { I = 1; $('#S' + I + '__ID').show(); }
-                if (I >= N) I = N;
-                $('#S' + I + '__ID').show();
-                $('#S' + I + "__ID * ").removeAttr('disabled');
-                current_I = I;
-                if(I==4){
+                if (II < 1) { II = 1; $('#S' + II + '__ID').show(); }
+                if (II >= N) II = N;
+                $('#S' + II + '__ID').show();
+                $('#S' + II + "__ID * ").removeAttr('disabled');
+                current_I = II;
+                if(II==4){
                     $('#name__ID').attr('required','required');
                     $('#mobileNumber__ID').attr('required','required');
                     $('#email__ID').attr('required','required');
@@ -892,17 +895,17 @@
                     var age=$("#D__ID input[name=age]:checked").val();
                     var fluent=$("#D__ID input[name=fluent]:checked").val();
                     var smartphone=$("#D__ID input[name=smart_phone]:checked").val();
-                    var problem='';
-                    if($("#D__ID input[name=shiftwork]:checked").val()=='Y' && $("#D__ID input[name=shifts]:checked").val()!='0' ) problem='shiftworker';
-                    if(parseFloat($("#D__ID input[name=sleep_hours]").val())<=6 ) problem+='short sleeper';
-                    if($("#D__ID input[name=trouble_wake]:checked").val()=='Y' && $("#D__ID input[name=awake_type]:checked").val()!='evening' && $("#D__ID input[name=commitments]:checked").val()!='Y' ) problem+='delayed sleep phase';
+                    var sleep_problem='';
+                    if($("#D__ID input[name=shiftwork]:checked").val()=='Y' && $("#D__ID input[name=shifts]:checked").val()!='0' ) sleep_problem='shiftworker';
+                    if(parseFloat($("#D__ID input[name=sleep_hours]").val())<=6 ) sleep_problem+='short sleeper';
+                    if($("#D__ID input[name=trouble_wake]:checked").val()=='Y' && $("#D__ID input[name=awake_type]:checked").val()=='evening' && $("#D__ID input[name=commitments]:checked").val()=='Y' ) sleep_problem+='delayed sleep phase';
                     var osa=$("#D__ID input[name=osa]:checked").val();
                     var insomnia=$("#D__ID input[name=insomnia]:checked").val();
                     var none=$("#D__ID input[name=none]:checked").val();
                     var rls=$("#D__ID input[name=rls]:checked").val();
                     var narcolepsy=$("#D__ID input[name=narcolepsy]:checked").val();
                     var sbd=$("#D__ID input[name=sbd]:checked").val();
-                    if(age=='Y' && fluent=='Y' &&  smartphone=='Y' && problem!='' && (osa=='on' || insomnia=='on' || none=='on') && ( rls!='on' && narcolepsy!='on' && sbd!='on') && problem!='') {
+                    if(age=='Y' && fluent=='Y' &&  smartphone=='Y' && sleep_problem!='' && (((osa=='on' || insomnia=='on' || none=='on') && ( rls!='on' && narcolepsy!='on' && sbd!='on')) || (osa!='on' && insomnia!='on' && none!='on' && rls!='on' && narcolepsy!='on' && sbd!='on' )) && sleep_problem!='') {
                         show_section(current_I + 1)
                     }
                     else{
@@ -980,14 +983,14 @@
                     if(data.problem=='shiftworker') data.problem='shiftworker, delayed sleep phase'
                     if(data.problem=='') data.problem='delayed sleep phase'
                 }
-                if(data.age=='Y' && data.fluent=='Y' && data.smart_phone=='Y' && data.problem!='' && (data.osa=='on' || data.insomnia=='on' || data.none=='on') && (data.rls!='on' && data.narcolepsy!='on' && data.sbd!='on')) {
+                if(data.age=='Y' && data.fluent=='Y' && data.smart_phone=='Y' && data.problem!='' && (((data.osa=='on' || data.insomnia=='on' || data.none=='on') && (data.rls!='on' && data.narcolepsy!='on' && data.sbd!='on')) || (data.osa!='on' && data.insomnia!='on' && data.none!='on' && data.rls!='on' && data.narcolepsy!='on' && data.sbd!='on'))) {
                     data.eligible='Y'
                 }
                 else{
                     data.eligible='N'
                 }
                 //-------------------------------------
-                return true;
+                return true
             }
             //---------------------------------------
             m.after_insert = function (data, index) {
@@ -995,9 +998,7 @@
                     $('#S' + i + "__ID").hide();
                     $('#S' + i + "__ID * ").attr('disabled', 'disabled');
                 }
-                if(data.age=='Y' && data.fluent=='Y' && data.smart_phone=='Y' && data.problem!='' && (data.osa=='on' || data.insomnia=='on' || data.none=='on') && (data.rls!='on' && data.narcolepsy!='on' && data.sbd!='on')) {
-                    $vm.load_module(m.prefix + 'thank-you', '', {});
-                }
+                $vm.load_module(m.prefix + 'thank-you', '', {});
             }
             //-------------------------------------
             $('#mobileNumber__ID').keyup(function (e) {
