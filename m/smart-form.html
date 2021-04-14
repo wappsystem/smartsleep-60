@@ -1046,22 +1046,29 @@
                     if(data.problem=='shiftworker') data.problem='shiftworker, delayed sleep phase'
                     if(data.problem=='') data.problem='delayed sleep phase'
                 }
-                if(data.age=='Y' && data.fluent=='Y' && data.smart_phone=='Y' && data.problem!='' && (((data.osa=='on' || data.insomnia=='on' || data.none=='on') && (data.rls!='on' && data.narcolepsy!='on' && data.sbd!='on')) || (data.osa!='on' && data.insomnia!='on' && data.none!='on' && data.rls!='on' && data.narcolepsy!='on' && data.sbd!='on'))) {
+                if(data.age=='Y' && data.fluent=='Y' && data.smart_phone=='Y' && data.problem!='' && 
+                    (((data.osa=='on' || data.insomnia=='on' || data.none=='on') && 
+                    (data.rls!='on' && data.narcolepsy!='on' && data.sbd!='on')) || 
+                    (data.osa!='on' && data.insomnia!='on' && data.none!='on' && data.rls!='on' && data.narcolepsy!='on' && data.sbd!='on'))) 
+                    {
                     data.eligible='Y'
+                    $vm.load_module(m.prefix + 'thank-you', '', {});
                 }
                 else{
                     data.eligible='N'
+                    $vm.load_module(m.prefix + 'not_elig', '', {});
                 }
                 //-------------------------------------
                 return true
             }
             //---------------------------------------
             m.after_insert = function (data, index) {
-                for (var i = 1; i <= N; i++) {
+/*                for (var i = 1; i <= N; i++) {
                     $('#S' + i + "__ID").hide();
                     $('#S' + i + "__ID * ").attr('disabled', 'disabled');
                 }
                 $vm.load_module(m.prefix + 'thank-you', '', {});
+*/                
             }
             //-------------------------------------
             $('#mobileNumber__ID').keyup(function (e) {
